@@ -102,10 +102,11 @@ def run_quiz(questions):
 
     if st.button("Submit"):
         if choice == q["a"]:
-            st.success("✅ Correct")
+            st.success("✅ Correct!")
             st.session_state.score += 1
         else:
-            st.error(f"❌ Wrong. Correct: {q['a']}")
+            st.error("❌ Wrong!")
+            st.info(f"💡 Correct answer: **{q['a']}**")
         st.session_state.q += 1
         st.rerun()
 
@@ -129,8 +130,8 @@ else:
     else:
         if st.session_state.round == 0:
             if st.session_state.score >= 5:
-                st.success("🎉 You entered Round 2!")
-                if st.button("Continue"):
+                st.success("🎉 Congratulations! You entered Round 2!")
+                if st.button("Continue to Round 2"):
                     st.session_state.round = 1
                     st.session_state.q = 0
                     st.rerun()
